@@ -1,6 +1,8 @@
 package com.example.hellohomeo.Modal;
 
+import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
 @Entity(tableName = "crew")
@@ -8,8 +10,16 @@ public class Modal {
 
     @PrimaryKey(autoGenerate = true)
      private int crewid;
-
-    String name,agency,image,wikipedia,status;
+@ColumnInfo(name = "name")
+    String name;
+    @ColumnInfo(name = "agency")
+    String agency;
+    @ColumnInfo(name = "image")
+    String image;
+    @ColumnInfo(name = "wikipedia")
+    String wikipedia;
+    @ColumnInfo(name = "status")
+    String status;
 
     public String getName() {
         return name;
