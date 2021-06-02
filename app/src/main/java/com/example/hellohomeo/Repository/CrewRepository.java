@@ -28,6 +28,9 @@ new InsertAsyncTask(database).execute(crewlist);
     public LiveData<List<Modal>> getallcrew() {
         return getallcrew;
     }
+    public void deleteAll()  {
+        new deleteAllWordsAsyncTask(database.crewDao()).execute();
+    }
 
    static  class InsertAsyncTask extends AsyncTask<List<Modal> ,Void ,Void>{
 
@@ -38,6 +41,19 @@ new InsertAsyncTask(database).execute(crewlist);
         @Override
         protected Void doInBackground(List<Modal>... lists) {
             crewDao.insert(lists[0]);
+            return null;
+        }
+    }
+    private static class deleteAllWordsAsyncTask extends AsyncTask<Void, Void, Void> {
+        private CrewDao mAsyncTaskDao;
+
+        deleteAllWordsAsyncTask(CrewDao dao) {
+            mAsyncTaskDao = dao;
+        }
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+            mAsyncTaskDao.deleteAll();
             return null;
         }
     }

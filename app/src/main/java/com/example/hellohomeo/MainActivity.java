@@ -2,6 +2,8 @@ package com.example.hellohomeo;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -24,6 +26,7 @@ import retrofit2.Response;
 public class MainActivity extends AppCompatActivity {
     RecyclerView recyclerView;
  Adapter adapter;
+ Button refresh, delete;
  List<Modal> crewlist;
 private CrewViewModal crewViewModal;
 private CrewRepository crewRepository;
@@ -36,7 +39,20 @@ private CrewRepository crewRepository;
         recyclerView = findViewById(R.id.recycler);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
+refresh=findViewById(R.id.refresh);
+delete=findViewById(R.id.delete);
+refresh.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        gettingdata();
+    }
+});
+delete.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+crewViewModal.deleteAll();
+    }
+});
 
         crewlist=new ArrayList<>();
         crewRepository=new CrewRepository(getApplication());

@@ -22,6 +22,7 @@ public class CrewViewModal  extends AndroidViewModel {
         crewRepository=new CrewRepository(application);
         getallcrew=crewRepository.getallcrew();
     }
+    //insert function
 public void insert(List<Modal> list )
 {
     crewRepository.insert(list);
@@ -29,4 +30,5 @@ public void insert(List<Modal> list )
 public LiveData<List<Modal>> getallcrew(){
             return getallcrew;
 }
+    public void deleteAll() {crewRepository.deleteAll();}
 }
